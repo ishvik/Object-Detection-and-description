@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Delhi Hack Project</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/Style.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="{{url_for('static', filename='javascript/jquery-1.10.2.min.js') }}"></script>
+</head>
+<body>
+	<div class="upper">
+		<div class="FirstLine"></div>
+		<div class="SecondLine">
+			<div class="log">
+				<img src="{{ url_for('static', filename='images/rnn8.jpg') }}"/>
+				<label>ObJect Detection</label>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+    <div class="sidebar">
+       <ul>
+       <form action="/camera" method="POST" enctype="multipart/form-data"> 
+		<li><label id="camera-btn" type="submit"><i class="fa fa-camera-retro" aria-hidden="true"></i> Camera</label></li>
+	</form>
+		<li class="trans"><label ><i class="fas fa-language"></i> Translate</label>
+                    
+                    <div class="lang">
+                        <select id="select_lang" class="select_lang" name="languages" method="GET" >
+                        {% for language in languages %}
+                        {% if language=='english' %}
+                            <option value= "{{language}}" SELECTED >{{language}}</option>
+                        {% else %}
+                            <option value= "{{language}}" >{{language}}</option>
+                        {% endif %}
+                        {% endfor %}
+                        </select>
+                    </div>  
+                </li>
+	</ul>
+	</div>
+	<div id="text" class="text1">
+		<p style="text-align:left" id="textContent"></p>
+	</div>
+	<center>
+    <div class="audiplay">
+        <div id="main">
+			<div id="player">
+				<div id="buttons">
+					<button id="pre" onclick="pre()"><img src="{{ url_for('static', filename='images/Pre.png') }}" height="90%" width="90%"/></button>
+					<button id="play" onclick="playOrPauseSong()"><img src="{{ url_for('static', filename='images/Play.png') }}"/></button>
+					<button id="next" onclick="next()"><img src="{{ url_for('static', filename='images/Next.png') }}" height="90%" width="90%"/></button>
+				</div>
+                <div id="songTitle"></div>
+                <div id="seek-bar">
+					<div id="fill"></div>
+					<div id="handle"></div>
+				</div>
+            </div>
+        </div>
+    </div>
+    </center>
+<script type="text/javascript" src="{{url_for('static', filename='javascript/jquery.min.js')}}"></script> 
+<script type="text/javascript" src="{{url_for('static', filename='javascript/function.js') }}">
+</script>
+  
+</body>
+
+</html>
